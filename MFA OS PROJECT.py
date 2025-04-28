@@ -1,16 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import os
 import json
 import hashlib
 import random
 import time
 
-# Create a directory to store user data
 USER_DIR = "users"
 if not os.path.exists(USER_DIR):
     os.makedirs(USER_DIR)
@@ -49,7 +42,6 @@ def login_user():
     """Login function (will be extended in Modules 2 & 3)"""
     username = input("Enter username: ").strip()
 
-    # Check for suspicious characters or trapdoor attempts
     if ".." in username or "/" in username or "\\" in username:
         print("Suspicious username detected!")
         return False
@@ -71,12 +63,10 @@ def login_user():
         print("Incorrect password!")
         return False
 
-    # ← Module 2's MFA will go here
-        # Step 2: OTP Generation
+
     otp = str(random.randint(100000, 999999))
     print(f"\n📲 Your OTP is: {otp}")
-    otp_valid_until = time.time() + 60  # OTP valid for 60 seconds
-
+    otp_valid_until = time.time() + 60 
     attempts = 3
     while attempts > 0:
         entered_otp = input("Enter OTP: ").strip()
@@ -98,10 +88,6 @@ def login_user():
 
     print("Login successful!")  
     return True
-    
-
-
-# In[ ]:
 
 
 while True:
@@ -120,10 +106,3 @@ while True:
         break
     else:
         print("❌ Invalid choice!")
-
-
-# In[ ]:
-
-
-
-
